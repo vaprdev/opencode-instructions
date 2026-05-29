@@ -14,7 +14,8 @@ Add the files you want to your opencode config:
 {
   "instructions": [
     "/path/to/instructions/llm-coding-guidelines.md",
-    "/path/to/instructions/simplicity-principles.md"
+    "/path/to/instructions/simplicity-principles.md",
+    "/path/to/instructions/beginner-friendly-explanations.md"
   ]
 }
 ```
@@ -25,6 +26,7 @@ Instructions are loaded into every session. Keep them short and broadly applicab
 
 - `instructions/llm-coding-guidelines.md`: general behavior for careful LLM-assisted coding.
 - `instructions/simplicity-principles.md`: simplicity-focused design principles for software work.
+- `instructions/beginner-friendly-explanations.md`: brief beginner-friendly context when explaining concepts.
 
 ## License
 

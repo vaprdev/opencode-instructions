@@ -38,3 +38,4 @@ These are heuristics, not universal rules. Use judgment for the task at hand.
 - "Fix the bug" means the bug should be reproduced before or while fixing it.
 - "Refactor X" means behavior should be checked before and after.
 - For multi-step tasks, state a brief plan and the verification path.
+- Write relevant integration tests, but prioritize speed: you do not need to run integration tests locally. Leave the full suite to CI unless explicitly asked to run it.

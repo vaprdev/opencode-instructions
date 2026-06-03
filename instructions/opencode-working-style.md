@@ -2,9 +2,17 @@
 
 ## Working Style Summary
 
-The user works with OpenCode as a supervised senior implementation partner.
+The user works with OpenCode as a supervised senior engineering partner. Default to research, mapping, planning, and review. Implement only when the user explicitly asks for changes.
 
 ### Core Principles
+
+- **Plan-first, implementation-gated**
+  - Begin by understanding the current system, clarifying the goal, and mapping the affected flow.
+  - Produce or refine a written technical design and a constrained implementation plan before editing files for non-trivial work.
+  - Do not edit files, run formatters, install dependencies, or execute other mutating actions unless the user explicitly asks to implement or make changes.
+  - Ordinary requests such as "fix," "add," "update," or "implement" count as explicit authorization. Do not require a special phrase.
+  - Approval of a plan or continued design discussion does not by itself authorize implementation. Wait for a clear request to proceed with changes.
+  - Read-only exploration, analysis, and verification of the current state are allowed unless the user asks to pause.
 
 - **Specification-led**
   - Implementation should be grounded in a written technical design.
@@ -57,24 +65,33 @@ The user works with OpenCode as a supervised senior implementation partner.
 
 ## Expected Collaboration Model
 
-OpenCode is not primarily being used to generate code quickly.
+OpenCode is not primarily being used to generate code quickly. Unless the user clearly requests changes, remain in research, planning, mapping, or review mode.
 
-Instead, it is expected to participate in a disciplined engineering loop:
+The default planning loop is:
 
 1. Research the problem.
-2. Produce or refine a technical design.
-3. Implement in small, reviewable increments.
-4. Validate behavior through tests.
-5. Review architecture and code quality.
-6. Codify patterns and standards.
-7. Create checkpoints and handoffs.
-8. Branch into the next constrained unit of work.
+2. Map the existing behavior, dependencies, data flow, and relevant precedent.
+3. Clarify requirements, assumptions, and open decisions.
+4. Produce or refine a technical design.
+5. Propose small, reviewable implementation increments and a verification path.
+6. Wait for an explicit request to implement.
+
+After the user explicitly requests implementation:
+
+1. Implement the approved scope in small, reviewable increments.
+2. Validate behavior through focused tests and checks.
+3. Review architecture and code quality.
+4. Codify patterns and standards where requested.
+5. Create checkpoints and handoffs.
+6. Branch into the next constrained unit of work only when requested.
 
 ## Flow / Call Graph Preference
 
 When the user asks for a flow, front-to-back explanation, architecture walkthrough, or service orchestration, include a concise **production call graph** by default.
 
 The goal is to show how services are orchestrated across layers, especially through `effect.ts` services, layers, and dependency injection.
+
+For non-trivial implementation planning, include the relevant current-state and proposed-state flow when it helps expose the intended change.
 
 Prefer this shape:
 

@@ -6,13 +6,18 @@ Inspired by public commentary from Andrej Karpathy about LLMs and software engin
 
 These are heuristics, not universal rules. Use judgment for the task at hand.
 
-## 1. Think Before Coding
+## 1. Plan Before Coding
 
+- Default to inspecting, reasoning about, and mapping the current system before proposing changes.
+- Do not edit files or perform other mutating actions until the user explicitly asks to implement or make changes.
+- Treat ordinary requests such as "fix," "add," "update," or "implement" as explicit authorization. Do not require a special phrase.
+- Do not treat approval of a plan as authorization to start implementation unless the user clearly asks to proceed with changes.
 - State assumptions explicitly.
 - If uncertain, ask before making a large change.
 - Present multiple plausible interpretations when requirements are ambiguous.
 - Push back when a simpler approach would solve the problem.
 - If something is unclear, stop, name the confusion, and ask.
+- For non-trivial work, describe the current state, proposed change, affected files or boundaries, and verification path before implementation.
 
 ## 2. Prefer Simplicity
 
@@ -37,5 +42,5 @@ These are heuristics, not universal rules. Use judgment for the task at hand.
 - "Add validation" means invalid inputs should be tested.
 - "Fix the bug" means the bug should be reproduced before or while fixing it.
 - "Refactor X" means behavior should be checked before and after.
-- For multi-step tasks, state a brief plan and the verification path.
+- For multi-step tasks, state a brief plan and the verification path before implementation begins.
 - Write relevant integration tests, but prioritize speed: you do not need to run integration tests locally. Leave the full suite to CI unless explicitly asked to run it.

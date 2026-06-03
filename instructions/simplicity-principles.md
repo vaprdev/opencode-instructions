@@ -6,44 +6,51 @@ This file is not affiliated with, endorsed by, or authored by Rich Hickey.
 
 These are heuristics, not universal rules. Use judgment for the task at hand.
 
-## 1. Prefer Simple Over Easy
+## 1. Simplify the Plan First
+
+- Before implementation, map the current behavior and identify the smallest change that can satisfy the request.
+- State the intended scope and important non-goals for non-trivial work.
+- Do not turn planning into speculative architecture. Add only what the current requirement needs.
+- Do not begin implementation until the user explicitly requests changes.
+
+## 2. Prefer Simple Over Easy
 
 - Simple means one role, one concept, and minimal interleaving.
 - Easy means familiar, nearby, or convenient.
 - Choose simple when possible. Easy choices today often create complexity later.
 
-## 2. Treat Simplicity as a Reliability Tool
+## 3. Treat Simplicity as a Reliability Tool
 
 - Complex systems are harder to reason about, test, and change.
 - If a design cannot be held in your head, simplify it.
 - Reduce complexity before adding mechanisms to manage it.
 
-## 3. Keep Concerns Separate
+## 4. Keep Concerns Separate
 
 - Do not braid together things that can vary independently.
 - Keep state separate from logic where practical.
 - Keep I/O separate from computation where practical.
 - Prefer pure functions and immutable data for core logic.
 
-## 4. Compose Small Parts
+## 5. Compose Small Parts
 
 - Build systems from focused pieces with clear roles.
 - Compose simple components rather than creating large objects or frameworks.
 - Avoid god objects, deep inheritance trees, and implicit global state.
 
-## 5. Prefer Values Over Mutable Places
+## 6. Prefer Values Over Mutable Places
 
 - Values are easier to inspect, compare, pass around, and reason about.
 - Mutable places entangle meaning with time.
 - If state must change, isolate mutation and make it explicit.
 
-## 6. Keep Data Visible
+## 7. Keep Data Visible
 
 - Prefer plain data when plain data is enough.
 - Avoid hiding information behind unnecessary classes, getters, setters, or protocols.
 - Let information flow through the system in inspectable forms.
 
-## 7. Use the Right Simple Tool
+## 8. Use the Right Simple Tool
 
 | Concept | Prefer | Be Careful With |
 |---|---|---|

@@ -1,6 +1,6 @@
 # opencode instructions
 
-Personal opencode instruction files I use to bias agents toward simpler, more careful software engineering.
+Personal opencode instruction files I use to bias agents toward simpler, more careful software engineering. The working-style guidance defaults to research, mapping, and planning before implementation, with code changes gated on an explicit user request.
 
 These are not official opencode defaults. They are personal preferences intended to be copied, modified, or ignored.
 
@@ -15,7 +15,9 @@ Add the files you want to your opencode config:
   "instructions": [
     "/path/to/instructions/llm-coding-guidelines.md",
     "/path/to/instructions/simplicity-principles.md",
-    "/path/to/instructions/beginner-friendly-explanations.md"
+    "/path/to/instructions/beginner-friendly-explanations.md",
+    "/path/to/instructions/effect-best-practices.md",
+    "/path/to/instructions/opencode-working-style.md"
   ]
 }
 ```
@@ -27,6 +29,8 @@ Instructions are loaded into every session. Keep them short and broadly applicab
 - `instructions/llm-coding-guidelines.md`: general behavior for careful LLM-assisted coding.
 - `instructions/simplicity-principles.md`: simplicity-focused design principles for software work.
 - `instructions/beginner-friendly-explanations.md`: brief beginner-friendly context when explaining concepts.
+- `instructions/effect-best-practices.md`: architecture and implementation guidance for TypeScript applications using Effect.
+- `instructions/opencode-working-style.md`: plan-first collaboration preferences, review workflow, and call-graph guidance.
 
 ## License
 

@@ -8,6 +8,8 @@ When explaining technical concepts, give clear, practical, beginner-friendly con
 - Prefer concise examples over abstract explanations.
 - Do not turn answers into long tutorials unless the user asks for a deeper walkthrough.
 - If multiple approaches are valid, explain the difference simply and recommend one.
+- When presenting an implementation plan, clearly separate the current behavior, proposed behavior, open questions, and verification steps.
+- Make it clear whether a response is a recommendation or an implementation result. Do not imply that changes were made when only a plan was requested.
 
 When helpful, structure explanations as:
 

@@ -6,9 +6,11 @@ Use this as the primary operating contract for coding sessions.
 
 - Optimize for the user understanding the concepts before implementation.
 - Be plan-heavy by default. Research, map, explain, and review before changing code.
-- Do not edit files, run formatters, install dependencies, commit, or perform other mutating actions unless the user explicitly asks to implement or make changes.
-- Approval of a plan or continued discussion does not authorize implementation.
-- Ordinary requests such as "fix", "add", "update", "merge", or "implement" count as authorization for that requested scope only.
+- For any non-trivial task, new feature slice, new pull request, architectural change, or ambiguous bug fix: inspect the current implementation, explain the current and proposed behavior, identify the affected boundaries, tradeoffs, risks, and verification path, then give the user a natural opportunity to respond before mutating files.
+- The user does not need a magic approval phrase. A clear response such as "sounds good", "go ahead", "do it", or an equivalent instruction authorizes implementation of the described scope.
+- Once a scope has been explained and authorized, implement that slice end-to-end without repeatedly asking for permission after every small edit.
+- Simple, mechanical, explicitly scoped requests may be executed immediately when explanation would add no value. Examples: run a test command, inspect git status, rename one symbol, reset explicitly identified abandoned changes, or update a known typo.
+- Requests such as "continue", "move on to the next PR", or "restart from fresh dev" authorize investigation and planning for the next scope. They do not authorize implementation of a new feature slice until that slice has been explained.
 - Make surgical changes. Do not add extra features, abstractions, cleanup, refactors, dependencies, or documentation unless the user explicitly says it is okay.
 
 ## Explanation Style
@@ -30,11 +32,11 @@ Use this as the primary operating contract for coding sessions.
 
 - Make surgical changes only.
 - Touch the fewest files and lines needed.
-- Every changed line should trace back to the user's request.
+- Every changed line should trace back to the approved scope.
 - Match the existing style and repository patterns.
-- Break implementation into small, reviewable steps.
-- After each meaningful implementation step, stop and summarize what changed.
-- Do not continue into the next implementation step until the user explicitly says to continue.
+- Implement an approved slice end-to-end without unnecessary approval prompts.
+- Pause when the implementation would materially expand beyond the explained scope, a meaningful tradeoff or ambiguity appears, destructive worktree operations are needed, concurrent work directly overlaps the task, or the approved slice is complete and the next slice has not yet been explained.
+- After the approved slice is complete, summarize what changed and how it was verified.
 
 ## Verification
 

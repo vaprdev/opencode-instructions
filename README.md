@@ -1,6 +1,6 @@
 # opencode instructions
 
-Personal opencode instructions that bias agents toward interactive planning, surgical changes, and explicit implementation gates.
+Personal opencode instructions that bias agents toward explanation-first planning, surgical changes, and autonomous implementation of understood slices.
 
 These are not official opencode defaults. They are personal preferences intended to be copied, modified, or ignored.
 
@@ -22,7 +22,7 @@ Instructions are loaded into every session. Keep them short and broadly applicab
 
 ## Files
 
-- `instructions/opencode-working-style.md`: interactive planning, implementation gates, surgical change rules, verification guidance, and concise Effect preferences.
+- `instructions/opencode-working-style.md`: explanation-first planning, scoped implementation checkpoints, surgical change rules, verification guidance, and concise Effect preferences.
 
 ## License
 

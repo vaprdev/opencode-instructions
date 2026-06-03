@@ -1,22 +1,18 @@
 # opencode instructions
 
-Personal opencode instruction files I use to bias agents toward simpler, more careful software engineering. The working-style guidance defaults to research, mapping, and planning before implementation, with code changes gated on an explicit user request.
+Personal opencode instructions that bias agents toward interactive planning, surgical changes, and explicit implementation gates.
 
 These are not official opencode defaults. They are personal preferences intended to be copied, modified, or ignored.
 
-The files are inspired by public ideas from Andrej Karpathy and Rich Hickey, but are not affiliated with, endorsed by, or authored by either of them.
+These are not affiliated with, endorsed by, or authored by opencode or Effect.
 
 ## Usage
 
-Add the files you want to your opencode config:
+Add the instruction file to your opencode config:
 
 ```json
 {
   "instructions": [
-    "/path/to/instructions/llm-coding-guidelines.md",
-    "/path/to/instructions/simplicity-principles.md",
-    "/path/to/instructions/beginner-friendly-explanations.md",
-    "/path/to/instructions/effect-best-practices.md",
     "/path/to/instructions/opencode-working-style.md"
   ]
 }
@@ -26,11 +22,7 @@ Instructions are loaded into every session. Keep them short and broadly applicab
 
 ## Files
 
-- `instructions/llm-coding-guidelines.md`: general behavior for careful LLM-assisted coding.
-- `instructions/simplicity-principles.md`: simplicity-focused design principles for software work.
-- `instructions/beginner-friendly-explanations.md`: brief beginner-friendly context when explaining concepts.
-- `instructions/effect-best-practices.md`: architecture and implementation guidance for TypeScript applications using Effect.
-- `instructions/opencode-working-style.md`: plan-first collaboration preferences, review workflow, and call-graph guidance.
+- `instructions/opencode-working-style.md`: interactive planning, implementation gates, surgical change rules, verification guidance, and concise Effect preferences.
 
 ## License
 

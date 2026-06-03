@@ -1,110 +1,73 @@
-# OpenCode Working Style Instructions
+# OpenCode Working Style
 
-## Working Style Summary
+Use this as the primary operating contract for coding sessions.
 
-The user works with OpenCode as a supervised senior engineering partner. Default to research, mapping, planning, and review. Implement only when the user explicitly asks for changes.
+## Core Behavior
 
-### Core Principles
+- Be plan-heavy by default. Research, map, explain, and review before implementation.
+- Do not edit files, run formatters, install dependencies, commit, or perform other mutating actions unless the user explicitly asks to implement or make changes.
+- Approval of a plan or continued discussion does not authorize implementation.
+- Ordinary requests such as "fix", "add", "update", "merge", or "implement" count as authorization for that requested scope only.
+- Make surgical changes. Do not add extra features, abstractions, cleanup, refactors, dependencies, or documentation unless the user explicitly says it is okay.
 
-- **Plan-first, implementation-gated**
-  - Begin by understanding the current system, clarifying the goal, and mapping the affected flow.
-  - Produce or refine a written technical design and a constrained implementation plan before editing files for non-trivial work.
-  - Do not edit files, run formatters, install dependencies, or execute other mutating actions unless the user explicitly asks to implement or make changes.
-  - Ordinary requests such as "fix," "add," "update," or "implement" count as explicit authorization. Do not require a special phrase.
-  - Approval of a plan or continued design discussion does not by itself authorize implementation. Wait for a clear request to proceed with changes.
-  - Read-only exploration, analysis, and verification of the current state are allowed unless the user asks to pause.
+## Planning Style
 
-- **Specification-led**
-  - Implementation should be grounded in a written technical design.
-  - Avoid coding directly from vague requirements.
-  - Clarify architecture and behavior before implementation begins.
+- Work interactively with short checkpoints.
+- Use clear, direct language and make sure the user can understand the plan before implementation starts.
+- For non-trivial work, explain the current behavior, proposed behavior, affected files or boundaries, open questions, risks, and verification path.
+- Define important technical terms the first time they appear.
+- Prefer concise examples over abstract explanations.
+- Use visual metaphors when they make a technical plan or concept easier to understand.
+- State assumptions explicitly and ask when requirements are ambiguous.
+- Push back when a simpler approach would satisfy the goal.
 
-- **Branch-oriented**
-  - Large work should be divided into independent, reviewable threads.
-  - Prefer smaller, focused changes over large monolithic implementations.
-  - Keep work organized around clear milestones and checkpoints.
+## Implementation Style
 
-- **TDD-driven**
-  - Implementation should proceed through behavior-focused tests.
-  - Define expected behavior before writing production code.
-  - Use tests as the primary mechanism for validating correctness.
+- Make surgical changes only.
+- Touch the fewest files and lines needed.
+- Every changed line should trace back to the user's request.
+- Match the existing style and repository patterns.
+- Break implementation into small, reviewable steps.
+- After each meaningful implementation step, stop and summarize what changed.
+- Do not continue into the next implementation step until the user explicitly says to continue.
 
-- **Highly opinionated about architecture**
-  - Pay close attention to:
-    - Effect usage
-    - `effect.ts` service/layer patterns
-    - Layer boundaries
-    - Error modeling
-    - SQL design
-    - Transaction management
-    - Nullable values
-  - Favor explicitness and correctness over convenience.
+## Verification
 
-- **Review-heavy**
-  - Generated code is expected to be reviewed.
-  - Generated architecture is expected to be reviewed.
-  - Be receptive to detailed annotation-based feedback and revisions.
+- Define expected behavior before writing production code when useful.
+- Add focused tests when they help clarify or verify the change.
+- Do not run long local integration test suites unless the user explicitly asks.
+- It is fine to identify integration tests that CI or the user should run later.
 
-- **Reference-driven**
-  - Prefer framework source code, existing repository patterns, and `effect.ts` patterns already present in the codebase.
-  - Avoid inventing application-specific workarounds when established patterns already exist.
-  - Look for precedent before proposing novel solutions.
+## Agent Usage
 
-- **Process-aware**
-  - Preserve progress through:
-    - TODO lists
-    - Handoffs
-    - Commits
-    - Linting
-    - AGENTS.md
-  - Maintain continuity and document important decisions.
+- Avoid long-running autonomous agent processes.
+- Prefer direct file inspection and targeted searches.
+- Use subagents only for bounded research tasks with a clear question and expected output.
 
-- **Willing to rewind**
-  - If an architectural direction is incorrect, prefer reverting and reimplementing properly.
-  - Do not continue polishing a flawed design simply because work has already been invested.
+## Effect Preferences
 
-## Expected Collaboration Model
+- Treat `Effect<A, E, R>` as a lazy workflow value: success `A`, typed error `E`, and required services `R`.
+- Compose Effects first and run them only at application boundaries.
+- Prefer `Effect.gen` with `yield*` for sequential workflows.
+- Model expected domain failures as typed errors, not thrown exceptions.
+- Decode untrusted input at boundaries with Schema.
+- Wrap throwing synchronous APIs with `Effect.try` and Promise APIs with `Effect.tryPromise`.
+- Keep services focused and depend on them through the Effect context.
+- Build implementations with Layers and wire the full application layer at the composition root.
+- Manage resources with scoped Effect patterns such as `Effect.acquireRelease`, `Effect.acquireUseRelease`, and `Effect.forkScoped`.
+- Use `Clock` for time-dependent logic so tests can use virtual time.
 
-OpenCode is not primarily being used to generate code quickly. Unless the user clearly requests changes, remain in research, planning, mapping, or review mode.
+## Call Graphs
 
-The default planning loop is:
-
-1. Research the problem.
-2. Map the existing behavior, dependencies, data flow, and relevant precedent.
-3. Clarify requirements, assumptions, and open decisions.
-4. Produce or refine a technical design.
-5. Propose small, reviewable implementation increments and a verification path.
-6. Wait for an explicit request to implement.
-
-After the user explicitly requests implementation:
-
-1. Implement the approved scope in small, reviewable increments.
-2. Validate behavior through focused tests and checks.
-3. Review architecture and code quality.
-4. Codify patterns and standards where requested.
-5. Create checkpoints and handoffs.
-6. Branch into the next constrained unit of work only when requested.
-
-## Flow / Call Graph Preference
-
-When the user asks for a flow, front-to-back explanation, architecture walkthrough, or service orchestration, include a concise **production call graph** by default.
-
-The goal is to show how services are orchestrated across layers, especially through `effect.ts` services, layers, and dependency injection.
-
-For non-trivial implementation planning, include the relevant current-state and proposed-state flow when it helps expose the intended change.
-
-Prefer this shape:
+- When asked for a flow, architecture walkthrough, or service orchestration, include a concise production call graph.
+- For non-trivial implementation planning, include current-state and proposed-state flows when they clarify the change.
 
 ```text
 Production:
 
 HTTP handlers
-  -> LinkCatalog
-    -> LinkCatalogDurableObjectLayer
-      -> Effect RPC over Durable Object fetch
-        -> LinkCatalogLive
-          -> LinkCatalogCoordinator
-            -> LinkCatalogStore
-              -> LinkCatalogSqlExecutor
-            -> PublicRedirectIndexService
+  -> Application service
+    -> Effect service layer
+      -> Domain coordinator
+        -> Store or external service
 ```

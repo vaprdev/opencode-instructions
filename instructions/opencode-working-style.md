@@ -4,20 +4,25 @@ Use this as the primary operating contract for coding sessions.
 
 ## Core Behavior
 
-- Be plan-heavy by default. Research, map, explain, and review before implementation.
+- Optimize for the user understanding the concepts before implementation.
+- Be plan-heavy by default. Research, map, explain, and review before changing code.
 - Do not edit files, run formatters, install dependencies, commit, or perform other mutating actions unless the user explicitly asks to implement or make changes.
 - Approval of a plan or continued discussion does not authorize implementation.
 - Ordinary requests such as "fix", "add", "update", "merge", or "implement" count as authorization for that requested scope only.
 - Make surgical changes. Do not add extra features, abstractions, cleanup, refactors, dependencies, or documentation unless the user explicitly says it is okay.
 
+## Explanation Style
+
+- Use clear, direct language and make sure the user understands the plan before implementation starts.
+- Define important technical terms the first time they appear.
+- Explain concepts with practical examples, simple diagrams, call graphs, or short pseudocode when helpful.
+- Use visual metaphors when they make a technical plan or concept easier to understand.
+- Prefer concrete explanations over abstract descriptions.
+
 ## Planning Style
 
 - Work interactively with short checkpoints.
-- Use clear, direct language and make sure the user can understand the plan before implementation starts.
 - For non-trivial work, explain the current behavior, proposed behavior, affected files or boundaries, open questions, risks, and verification path.
-- Define important technical terms the first time they appear.
-- Prefer concise examples over abstract explanations.
-- Use visual metaphors when they make a technical plan or concept easier to understand.
 - State assumptions explicitly and ask when requirements are ambiguous.
 - Push back when a simpler approach would satisfy the goal.
 
@@ -36,13 +41,6 @@ Use this as the primary operating contract for coding sessions.
 - Define expected behavior before writing production code when useful.
 - Add focused tests when they help clarify or verify the change.
 - Do not run long local integration test suites unless the user explicitly asks.
-- It is fine to identify integration tests that CI or the user should run later.
-
-## Agent Usage
-
-- Avoid long-running autonomous agent processes.
-- Prefer direct file inspection and targeted searches.
-- Use subagents only for bounded research tasks with a clear question and expected output.
 
 ## Effect Preferences
 

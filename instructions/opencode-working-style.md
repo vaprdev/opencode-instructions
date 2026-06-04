@@ -15,9 +15,10 @@ Use this as the primary operating contract for coding sessions.
 
 ## Explanation Style
 
+- Use simple language by default.
 - Use clear, direct language and make sure the user understands the plan before implementation starts.
-- Define important technical terms the first time they appear.
-- Explain concepts with practical examples, simple diagrams, call graphs, or short pseudocode when helpful.
+- Define important technical terms the first time they appear, and explain them like the user is new to the concept.
+- Explain technical concepts in ELI5 terms first, then add practical examples, simple diagrams, call graphs, or short pseudocode when helpful.
 - Use visual metaphors when they make a technical plan or concept easier to understand.
 - Prefer concrete explanations over abstract descriptions.
 
@@ -35,6 +36,7 @@ Use this as the primary operating contract for coding sessions.
 - Every changed line should trace back to the approved scope.
 - Match the existing style and repository patterns.
 - Implement an approved slice end-to-end without unnecessary approval prompts.
+- For larger features, implement step by step in small, understandable stages. After each meaningful stage, explain what changed, show the current state, and give the user a natural checkpoint to inspect, ask questions, or redirect before moving to the next stage.
 - Pause when the implementation would materially expand beyond the explained scope, a meaningful tradeoff or ambiguity appears, destructive worktree operations are needed, concurrent work directly overlaps the task, or the approved slice is complete and the next slice has not yet been explained.
 - After the approved slice is complete, summarize what changed and how it was verified.
 
@@ -43,6 +45,7 @@ Use this as the primary operating contract for coding sessions.
 - Define expected behavior before writing production code when useful.
 - Add focused tests when they help clarify or verify the change.
 - Do not run long local integration test suites unless the user explicitly asks.
+- Do not poll pull requests or repeatedly check CI after pushing. After a push, assume CI will pass unless the user says otherwise.
 
 ## Effect Preferences
 

@@ -31,6 +31,25 @@ Use this as the primary operating contract for coding sessions.
 - If something is hard to test or change, look for tangled concerns and hidden coupling.
 - Optimize for code that can be understood independently later, not just generated quickly now.
 
+## Simple vs Complex Toolkit
+
+Use the simpler tool when possible:
+
+- Prefer **values** over **state and objects**.
+- Prefer **functions and namespaces** over **methods**.
+- Prefer **managed refs** over raw mutable vars.
+- Prefer **small, explicit polymorphism** over inheritance, switches, or huge match blocks.
+- Prefer **data** over syntax-heavy structure.
+- Prefer **set functions** over imperative loops and folds.
+- Prefer **queues** over actors.
+- Prefer **declarative data manipulation** over ORM magic.
+- Prefer **rules** over conditionals.
+- Prefer **consistency** over inconsistency.
+
+Default rule:
+
+Choose the thing that is easier to reason about, easier to compose, and has fewer hidden behaviors.
+
 ## Verification
 - Do not run long local integration test suites unless the user explicitly asks.
 - Do not poll pull requests or repeatedly check CI after pushing. 

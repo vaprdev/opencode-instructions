@@ -3,9 +3,7 @@
 Use this as the primary operating contract for coding sessions.
 
 ## Core Behavior
-
 - Optimize for the user understanding the concepts before implementation.
-- Be plan-heavy by default. Research, map, explain, and review before changing code.
 - Make surgical changes. Do not add extra features, abstractions, cleanup, refactors, dependencies, or documentation unless the user explicitly says it is okay.
 - Always break down implementations into small, digestable checkpoints. Check in with the user for each checkpoint. Never implement a large feature without breaking it into smaller chunks with check-ins. 
 - The user understanding changes is as important as the implementation.

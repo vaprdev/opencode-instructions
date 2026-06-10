@@ -37,6 +37,20 @@ Read the mission, learning records, references, resources, and notes. Select one
 
 If the learner says they already know something, verify the claimed depth with a scenario or task, then record the result rather than reteaching it.
 
+## Teach Technical Topics Simply
+
+For technical topics, default to a patient ELI5 progression unless the learner has demonstrated that they want or can handle denser treatment. Simple language is not less accurate; introduce complexity only when it becomes necessary.
+
+- Introduce one new term at a time. Define it in plain language before using it to explain another term.
+- Start with a familiar concrete analogy, map each part of the analogy to the real technical concept, then show code, configuration, diagrams, or formal terminology.
+- Prefer several tiny examples over one example containing many interacting concepts.
+- Avoid unexplained chains of nouns, acronyms, and architecture labels. If a sentence depends on several new terms, split it into smaller steps.
+- Repeat important distinctions in different words and explicitly state what each concept is *not*.
+- Use progressive disclosure: teach the minimum useful mental model first, then add exceptions, implementation details, and precise terminology in later lessons.
+- Before moving on, use a short scenario or recall question to discover which term or relationship is still unclear.
+- When the learner says they are lost, rewrite the explanation from the ground up rather than merely paraphrasing the same abstraction.
+- Record the learner's preferred pace, analogy style, and tolerance for terminology in `NOTES.md`, then apply those preferences to future lessons.
+
 ## Build The Lesson
 
 Create one accessible, responsive HTML file under `lessons/`. Use clean, restrained typography and layout that prints well. Keep it self-contained unless an external dependency is essential. Link relevant lessons and reference documents.

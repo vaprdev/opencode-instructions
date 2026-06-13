@@ -5,7 +5,7 @@
   },
   "instructions": [
     "instructions/opencode-working-style.md",
-    "instructions/rich-hickey-preferences.md",
+    "instructions/functional-programming.md",
     "instructions/karpathy.md"
   ],
   "references": {

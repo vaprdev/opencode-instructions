@@ -4,7 +4,6 @@
     "paths": ["skills"]
   },
   "instructions": [
-    "instructions/opencode-working-style.md",
     "instructions/functional-programming.md",
     "instructions/karpathy.md"
   ],
